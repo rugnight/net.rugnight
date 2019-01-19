@@ -14,7 +14,7 @@ public class ConstantClassGeneretorWindow : EditorWindow
     [MenuItem("Window/Rc/ConstantClassGeneretor")]
     private static void Open()
     {
-        var window = GetWindow<ConstantClassGeneretorWindow>("ConstantClassGeneretor");
+        GetWindow<ConstantClassGeneretorWindow>("ConstantClassGeneretor");
     }
 
     private void OnEnable()
