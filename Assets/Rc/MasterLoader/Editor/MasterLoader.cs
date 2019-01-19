@@ -4,6 +4,7 @@ using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEditor;
 
 
@@ -40,13 +41,29 @@ namespace rc
         {
             var url = apiUrl + "?sheetName=" + sheetName + "&sheetUrl=" + sheetUrl;
 
-            using (WWW www = new WWW(url))
+            using (var request = UnityWebRequest.Get(url))
             {
-                while (www.MoveNext()) { }
-                Debug.Log(www.text);
+                var async = request.SendWebRequest();
+                while (!async.isDone) { }
 
-                return www.text;
+                if (!request.isHttpError && !request.isNetworkError)
+                {
+                    Debug.Log(request.downloadHandler.text);
+                    return request.downloadHandler.text;
+                }
+                else
+                {
+                }
             }
+            return "";
+
+            //using (WWW www = new WWW(url))
+            //{
+            //    while (www.MoveNext()) { }
+            //    Debug.Log(www.text);
+
+            //    return www.text;
+            //}
         }
 
         /// <summary>
@@ -214,9 +231,9 @@ namespace rc
             }
 
             File.WriteAllText(filePath, builder.ToString(), Encoding.UTF8);
+            AssetDatabase.ImportAsset(filePath);
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
-            //AssetDatabase.Refresh();
         }
 
         static string GetAssetResourcePath(string assetDir, string className)

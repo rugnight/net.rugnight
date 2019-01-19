@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using rc.constants;
 
 namespace rc
 {
-
     /// <summary>
     /// マスタ生成機能のウィンドウ
     /// </summary>
     public class MasterLoaderWindow : EditorWindow
     {
-        const string MenuPath = "Window/Rc/MasterLoader";
         const string WindowName = "MasterLoader";
 
         enum State {
@@ -25,7 +24,7 @@ namespace rc
 
         State m_state = State.Idle;
 
-        MasterLoaderSettings m_settings = null;
+        MasterLoaderSettings m_settings = new MasterLoaderSettings();
 
         int m_processCount = 0;
 
@@ -37,7 +36,7 @@ namespace rc
 
         Vector2 scrollPos = new Vector2();
 
-        [MenuItem(MenuPath)]
+        [MenuItem(EditorExtension.TOOL_MENU_ROOT + "MasterLoader")]
         private static void Open()
         {
             var window = GetWindow<MasterLoaderWindow>(WindowName);
@@ -46,14 +45,14 @@ namespace rc
         private void OnEnable()
         {
             EditorApplication.playModeStateChanged += OnChangePlayMode;
-            m_settings = MasterLoaderSettings.Load();
+            m_settings.Load();
             m_state = State.Clear;
         }
 
         private void OnDisable()
         {
             m_state = State.Clear;
-            MasterLoaderSettings.Save(m_settings);
+            m_settings.Save();
             EditorApplication.playModeStateChanged -= OnChangePlayMode;
         }
 

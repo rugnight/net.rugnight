@@ -1,0 +1,38 @@
+{
+    "apiUrl": "",
+    "assetDir": "Assets/Test/Resources/Master",
+    "accessorDir": "Assets/Test/Scripts/Master",
+    "namespaceName": "Master",
+    "masterInfoList": [
+        {
+            "masterName": "TestData",
+            "sheetUrl": "https://docs.google.com/spreadsheets/d/1qtCCGAzDSyHsx7Ev2oXEswI5F-6vzZVF3arnNPJ-u-w/edit#gid=0",
+            "enable": true
+        },
+        {
+            "masterName": "TownData",
+            "sheetUrl": "https://docs.google.com/spreadsheets/d/12aCCobyZAhVk6Rn1xG4cd7f2Cm9ZVBzyQDg7x1iLCEw/edit#gid=0",
+            "enable": false
+        },
+        {
+            "masterName": "MessageData",
+            "sheetUrl": "https://docs.google.com/spreadsheets/d/1qtCCGAzDSyHsx7Ev2oXEswI5F-6vzZVF3arnNPJ-u-w/edit#gid=0",
+            "enable": false
+        },
+        {
+            "masterName": "Status",
+            "sheetUrl": "https://docs.google.com/spreadsheets/d/1qtCCGAzDSyHsx7Ev2oXEswI5F-6vzZVF3arnNPJ-u-w/edit#gid=2099664875",
+            "enable": false
+        },
+        {
+            "masterName": "Field",
+            "sheetUrl": "https://docs.google.com/spreadsheets/d/1qtCCGAzDSyHsx7Ev2oXEswI5F-6vzZVF3arnNPJ-u-w/edit#gid=2104695349",
+            "enable": false
+        },
+        {
+            "masterName": "",
+            "sheetUrl": "",
+            "enable": false
+        }
+    ]
+}

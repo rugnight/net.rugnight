@@ -5,9 +5,8 @@ using UnityEditor;
 
 namespace rc
 {
-
     [System.Serializable]
-    public class MasterLoaderSettings
+    public class MasterLoaderSettings : EditorSettingsFile
     {
         const string SaveKey = "RcMasterLoader";
 
@@ -77,27 +76,6 @@ namespace rc
                         }
                     }
                 }
-            }
-        }
-
-        // 設定の保存
-        static public void Save(MasterLoaderSettings masterLoaderSettings)
-        {
-            string json = JsonUtility.ToJson(masterLoaderSettings);
-            EditorPrefs.SetString(SaveKey, json);
-        }
-
-        // 設定の読み込み
-        static public MasterLoaderSettings Load()
-        {
-            string json = EditorPrefs.GetString(SaveKey);
-            if (!string.IsNullOrEmpty(json))
-            {
-                return JsonUtility.FromJson<MasterLoaderSettings>(json);
-            }
-            else
-            {
-                return new MasterLoaderSettings();
             }
         }
     }
