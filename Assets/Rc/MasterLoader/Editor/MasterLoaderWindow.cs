@@ -14,24 +14,13 @@ namespace rc
     {
         const string WindowName = "MasterLoader";
 
-        enum State {
-            Clear,
-            Idle,
-            Request,
-            CreateClass,
-            WaitCompile,
-            CreateAsset,
-        }
-
-        State m_state = State.Idle;
-
         MasterLoaderSettings m_settings = new MasterLoaderSettings();
 
         string m_processingJson = null;
 
         Vector2 scrollPos = new Vector2();
 
-        [MenuItem(EditorExtension.TOOL_MENU_ROOT + "MasterLoader")]
+        [MenuItem(EditorExtension.TOOL_MENU_ROOT + WindowName)]
         private static void Open()
         {
             var window = GetWindow<MasterLoaderWindow>(WindowName);
@@ -41,12 +30,10 @@ namespace rc
         {
             EditorApplication.playModeStateChanged += OnChangePlayMode;
             m_settings.Load();
-            m_state = State.Clear;
         }
 
         private void OnDisable()
         {
-            m_state = State.Clear;
             m_settings.Save();
             EditorApplication.playModeStateChanged -= OnChangePlayMode;
         }
