@@ -28,12 +28,6 @@
             "masterName": "Field",
             "sheetUrl": "https://docs.google.com/spreadsheets/d/1qtCCGAzDSyHsx7Ev2oXEswI5F-6vzZVF3arnNPJ-u-w/edit#gid=2104695349",
             "enable": false
-        }
-    ]
-}  {
-            "masterName": "",
-            "sheetUrl": "",
-            "enable": false
         },
         {
             "masterName": "",
@@ -41,4 +35,4 @@
             "enable": false
         }
     ]
-}}}
+}
