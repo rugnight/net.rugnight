@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 8
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de9e72fedb7f1a48bee048a97aae846, type: 3}
+  m_Name: TestData
+  m_EditorClassIdentifier: 
+  list:
+  - Title: "\u6B63\u3057\u3044\u30C7\u30FC\u30BF"
+    StringTest: "\u3042\u3044\u3046\u3048\u304A"
+    UintTest: 1
+    IntTest: -1
+    LongTest: 1
+    UlongTest: 1
+    DoubleTest: 0.123
+    FloatTest: 0.1
+    IntArrayTest: fffffffffefffffffdffffff
+    UintArrayTest: 010000000200000003000000
+    FloatArrayTest:
+    - -1.23
+    - -0.34
+    - 123.345
+    DoubleArrayTest:
+    - -1.23
+    - -0.34
+    - 123.345
+    StringArrayTest:
+    - test
+    - test
+    - hoge
+    DateTimeTest: 1992/2/16 12:15:12
+    EnumTest: Android
+    EnumTestParsed: 11
+  - Title: "\u6B63\u3057\u304F\u306A\u3044\u3051\u3069\u5909\u63DB\u3067\u304D\u3066\u307B\u3057\u3044\u30C7\u30FC\u30BF"
+    StringTest: 0
+    UintTest: 2
+    IntTest: -2
+    LongTest: 4294967294
+    UlongTest: 2
+    DoubleTest: 0.123
+    FloatTest: 1.2
+    IntArrayTest: 010000000200000004000000
+    UintArrayTest: 010000000200000004000000
+    FloatArrayTest:
+    - -1.23
+    - -0.34
+    - 123.345
+    DoubleArrayTest:
+    - -1.23
+    - -0.34
+    - 123.345
+    StringArrayTest:
+    - test
+    - test
+    - hoge
+    DateTimeTest: 1992/2/17 12:15:12
+    EnumTest: IPhonePlayer
+    EnumTestParsed: 8
+  - Title: "\u30A8\u30E9\u30FC\u30C7\u30FC\u30BF"
+    StringTest: "\u3042\u3044\u3046\u3048\u304A"
+    UintTest: 3
+    IntTest: 3
+    LongTest: 3
+    UlongTest: 3
+    DoubleTest: 0.123
+    FloatTest: 2.3
+    IntArrayTest: 010000000200000005000000
+    UintArrayTest: 010000000200000005000000
+    FloatArrayTest:
+    - -1.23
+    - -0.34
+    - 123.345
+    DoubleArrayTest:
+    - -1.23
+    - -0.34
+    - 123.345
+    StringArrayTest:
+    - test
+    - test
+    - hoge
+    DateTimeTest: 1992/2/18 12:15:12
+    EnumTest: 0
+    EnumTestParsed: 0
+  - Title: "\u540D\u524D\u3060\u3088"
+    StringTest: "\u3042\u3044\u3046\u3048\u304A"
+    UintTest: 4
+    IntTest: 4
+    LongTest: 4
+    UlongTest: 4
+    DoubleTest: 0.123
+    FloatTest: 3.4
+    IntArrayTest: 010000000200000006000000
+    UintArrayTest: 010000000200000006000000
+    FloatArrayTest:
+    - -1.23
+    - -0.34
+    - 123.345
+    DoubleArrayTest:
+    - -1.23
+    - -0.34
+    - 123.345
+    StringArrayTest:
+    - test
+    - test
+    - hoge
+    DateTimeTest: 1992/2/19 12:15:12
+    EnumTest: 0
+    EnumTestParsed: 0

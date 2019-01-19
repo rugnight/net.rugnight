@@ -82,6 +82,11 @@ namespace rc
             var jsonString = json["data"].ToString();
 
             var masterData = CreateInstance(t);
+            if (masterData == null)
+            {
+                Debug.LogError("CreateInstance failue " + namespaceName + "." + sheetName);
+                return;
+            }
             JsonUtility.FromJsonOverwrite(jsonString, masterData);
 
             if (masterData != null)
@@ -231,9 +236,10 @@ namespace rc
             }
 
             File.WriteAllText(filePath, builder.ToString(), Encoding.UTF8);
-            AssetDatabase.ImportAsset(filePath);
             AssetDatabase.SaveAssets();
-            AssetDatabase.Refresh();
+            AssetDatabase.ImportAsset(filePath, ImportAssetOptions.ForceSynchronousImport | ImportAssetOptions.ForceUpdate);
+
+            //AssetDatabase.Refresh();
         }
 
         static string GetAssetResourcePath(string assetDir, string className)

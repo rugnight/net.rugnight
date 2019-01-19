@@ -1,7 +1,7 @@
 {
-    "apiUrl": "",
-    "assetDir": "Assets/Test/Resources/Master",
-    "accessorDir": "Assets/Test/Scripts/Master",
+    "apiUrl": "https://script.google.com/macros/s/AKfycbwcOHroxRUt-HrKXJIl8CufhetXELCoV-XC0bhg_IybVn0mVwJA/exec",
+    "assetDir": "Assets/Test/Master/Resources",
+    "accessorDir": "Assets/Test/Master/Script",
     "namespaceName": "Master",
     "masterInfoList": [
         {
@@ -12,7 +12,7 @@
         {
             "masterName": "TownData",
             "sheetUrl": "https://docs.google.com/spreadsheets/d/12aCCobyZAhVk6Rn1xG4cd7f2Cm9ZVBzyQDg7x1iLCEw/edit#gid=0",
-            "enable": false
+            "enable": true
         },
         {
             "masterName": "MessageData",
@@ -28,6 +28,12 @@
             "masterName": "Field",
             "sheetUrl": "https://docs.google.com/spreadsheets/d/1qtCCGAzDSyHsx7Ev2oXEswI5F-6vzZVF3arnNPJ-u-w/edit#gid=2104695349",
             "enable": false
+        }
+    ]
+}  {
+            "masterName": "",
+            "sheetUrl": "",
+            "enable": false
         },
         {
             "masterName": "",
@@ -35,4 +41,4 @@
             "enable": false
         }
     ]
-}
+}}}

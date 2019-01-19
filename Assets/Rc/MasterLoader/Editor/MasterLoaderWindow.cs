@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.Linq;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
@@ -26,13 +27,7 @@ namespace rc
 
         MasterLoaderSettings m_settings = new MasterLoaderSettings();
 
-        int m_processCount = 0;
-
         string m_processingJson = null;
-
-        MasterLoaderSettings.MasterInfo m_processingInfo = null;
-
-        Queue<MasterLoaderSettings.MasterInfo> m_processQueue = new Queue<MasterLoaderSettings.MasterInfo>();
 
         Vector2 scrollPos = new Vector2();
 
@@ -58,77 +53,6 @@ namespace rc
 
         private void OnChangePlayMode(PlayModeStateChange playModeStateChange)
         {
-        }
-
-        private void Update()
-        {
-            switch (m_state)
-            {
-                case State.Clear:
-                    m_processingJson = null;
-                    m_processingInfo = null;
-                    m_state = State.Idle;
-                    break;
-
-                case State.Idle:
-                    if (0 < m_processQueue.Count)
-                    {
-                        //m_processingInfo = m_processQueue.Dequeue();
-                        m_processingInfo = m_processQueue.Peek();
-                        m_state = State.Request;
-                    }
-                    break;
-
-                case State.Request:
-                    if (m_processingInfo != null)
-                    {
-                        m_processingJson = MasterLoader.RequestJson(m_processingInfo.masterName, m_processingInfo.sheetUrl, m_settings.apiUrl);
-                        if (!string.IsNullOrEmpty(m_processingJson))
-                        {
-                            m_state = State.CreateClass;
-                        }
-                        else
-                        {
-                            m_state = State.Clear;
-                        }
-                    }
-                    else
-                    {
-                        m_state = State.Clear;
-                    }
-                    break;
-
-                case State.CreateClass:
-                    MasterLoader.CreateClassFile(m_processingJson, m_settings.namespaceName, m_processingInfo.masterName, m_settings.assetDir, m_settings.accessorDir);
-                    AssetDatabase.Refresh();
-                    m_state = State.WaitCompile;
-                    break;
-
-                case State.WaitCompile:
-                    if (!EditorApplication.isCompiling && !EditorApplication.isUpdating)
-                    {
-                        m_state = State.CreateAsset;
-                    }
-                    break;
-
-                case State.CreateAsset:
-                    MasterLoader.CreateAssetFile(m_processingJson, m_settings.namespaceName, m_processingInfo.masterName, m_settings.assetDir);
-                    m_processQueue.Dequeue();
-                    m_state = State.Clear;
-                    break;
-
-            }
-            // プログレスバー
-            if (m_processCount != 0 && 0 < m_processQueue.Count)
-            {
-                var progress = 1.0f - ((float)m_processQueue.Count / (float)m_processCount);
-                var info = string.Format("{0} ({1}/{2})", m_processQueue.Peek().masterName, (m_processCount - m_processQueue.Count), m_processCount);
-                EditorUtility.DisplayProgressBar("MasterLoader", info, progress);
-            }
-            else
-            {
-                EditorUtility.ClearProgressBar();
-            }
         }
 
         private void OnGUI()
@@ -162,19 +86,29 @@ namespace rc
             }
 
             // 生成に必要な情報が入力されていなければUI無効に
-            GUI.enabled = m_settings.IsReady() && (0 == m_processQueue.Count);
+            GUI.enabled = m_settings.IsReady();
 
-            if (GUILayout.Button("マスタ生成"))
+            if (GUILayout.Button("マスタクラス生成"))
             {
-                m_processCount = 0;
-                foreach (var info in m_settings.masterInfoList)
+                var infos = m_settings.masterInfoList.Where((info) => info.enable);
+                foreach (var data in infos.Select((info, index) => new { info, index }))
                 {
-                    if (info.enable)
-                    {
-                        m_processCount++;
-                        m_processQueue.Enqueue(info);
-                    }
+                    EditorUtility.DisplayProgressBar(string.Format("マスタクラス生成({0}/{1})", data.index, infos.Count()), data.info.masterName, (float)data.index/ (float)infos.Count());
+                    var json = MasterLoader.RequestJson(data.info.masterName, data.info.sheetUrl, m_settings.apiUrl);
+                    MasterLoader.CreateClassFile(json, m_settings.namespaceName, data.info.masterName, m_settings.assetDir, m_settings.accessorDir);
                 }
+                EditorUtility.ClearProgressBar();
+            }
+            if (GUILayout.Button("マスタアセット生成"))
+            {
+                var infos = m_settings.masterInfoList.Where((info) => info.enable);
+                foreach (var data in infos.Select((info, index) => new { info, index }))
+                {
+                    EditorUtility.DisplayProgressBar(string.Format("マスタ生成({0}/{1})", data.index, infos.Count()), data.info.masterName, (float)data.index/ (float)infos.Count());
+                    var json = MasterLoader.RequestJson(data.info.masterName, data.info.sheetUrl, m_settings.apiUrl);
+                    MasterLoader.CreateAssetFile(json, m_settings.namespaceName, data.info.masterName, m_settings.assetDir);
+                }
+                EditorUtility.ClearProgressBar();
             }
 
             GUI.enabled = true;
