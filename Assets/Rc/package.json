@@ -2,6 +2,10 @@
   "name": "net.rugnight.rc",
   "displayName": "Rc",
   "version": "0.0.1",
-  "unity": "2018.2",
-  "description": "Rcライブラリ"
+  "unity": "2018.3",
+  "description": "Rcライブラリ",
+  "keywords": [ "Test" ],
+  "category": "Test",
+  "dependencies": {
+  }
 }
