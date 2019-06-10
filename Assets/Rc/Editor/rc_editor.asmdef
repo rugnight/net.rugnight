@@ -1,0 +1,17 @@
+{
+    "name": "rc_editor",
+    "references": [
+        "GUID:05443fc48efa8ae45978c203e351ad02"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
+}
