@@ -22,8 +22,6 @@ namespace rc
 
         private void Update()
         {
-            Debug.Log(range);
-
             if (Input.GetKeyUp(KeyCode.A))
             {
                 this.Fadein(1.0f);
@@ -32,7 +30,6 @@ namespace rc
             {
                 this.Fadeout(1.0f);
             }
-            
         }
 
         // --------------------------------------------------
