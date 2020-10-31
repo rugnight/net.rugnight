@@ -1,7 +1,7 @@
 {
   "name": "net.rugnight.rc",
   "displayName": "Rc",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "unity": "2018.3",
   "description": "Rcライブラリ",
   "keywords": [

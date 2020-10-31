@@ -17,7 +17,7 @@ namespace rc
 
         Vector2 scrollPos = new Vector2();
 
-        [MenuItem("Rc/" + WindowName)]
+        [MenuItem("RC/" + WindowName)]
         private static void Open()
         {
             var window = GetWindow<MasterLoaderWindow>(WindowName);
