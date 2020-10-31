@@ -8,7 +8,7 @@ namespace rc
     /// マスターデータクラスの生成
     /// 読み込みコード中に埋め込むと汚いので分離
     /// </summary>
-    static public class MasterClassCreater 
+    static public class MasterClassCreater
     {
 
         /// <summary>
@@ -60,11 +60,11 @@ namespace Master
             // --------------------------------------------------
             // ISerializationCallbackReceiver
             //
-            public void OnAfterDeserialize()
+            public virtual void OnAfterDeserialize()
             {{
 {3}
             }}
-            public void OnBeforeSerialize()
+            public virtual void OnBeforeSerialize()
             {{
             }}
         }}

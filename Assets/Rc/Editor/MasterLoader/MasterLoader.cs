@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.IO;
 using System.Text;
 using System.Collections;
@@ -133,27 +134,48 @@ namespace rc
         /// <param name="className"></param>
         /// <param name="assetDir"></param>
         /// <param name="accessorDir"></param>
-        static public void CreateClassFile(string jsonText, string namespaceName, string className, string assetDir, string accessorDir)
+        static public void CreateClassFile(string jsonText, string namespaceName, string sheetName, string assetDir, string accessorDir)
         {
-            var paramClassName = className + "Parameters";
+            var className = sheetName;
+            var paramClassName = "Model";//sheetName;
             var json = SimpleJSON.JSON.Parse(jsonText);
 
             var type = json["type"].AsArray;
-            // データ行を1行取得
-            var dataLine = type[0];
+            var propertyName = json["property"].AsArray;
 
             var builderPrameters = new StringBuilder();
             var builderSerialization = new StringBuilder();
 
-            foreach (var data in dataLine)
+            List<string> dataNames = new List<string>();
+            List<string> typeNames = new List<string>();
+            List<string> propNames = new List<string>();
+            foreach (var typeName in type[0])
             {
-                string varName = data.Key;
-                string varNameParsed = varName + "Parsed";
-                string propName = varName + "Data";
+                dataNames.Add(typeName.Key);
+                typeNames.Add(typeName.Value);
+            }
+            foreach (var propName in propertyName[0])
+            {
+                propNames.Add(propName.Value);
+            }
+            Debug.Assert(dataNames.Count == typeNames.Count);
+            Debug.Assert(typeNames.Count == propNames.Count);
 
-                if (data.Value.IsString)
+            for (int i = 0; i < typeNames.Count; ++i)
+            {
+                string varName = dataNames[i];
+                string varNameParsed = varName + "Parsed";
+                string propName = propNames[i];
+
+                Debug.Assert(varName != propName, "変数名とプロパティ名に同じ値は設定できません");
+                if (varName == propName)
                 {
-                    string dataValue = data.Value;
+                    propName += "Data";
+                }
+
+                //if (data.IsString)
+                {
+                    string dataValue = typeNames[i];
                     if (dataValue.ToLower() == "comment")
                     {
                         continue;

@@ -1,12 +1,14 @@
-﻿using System.Collections;
+﻿using System.Text;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using System.IO;
 
 namespace rc
 {
     [System.Serializable]
-    public class MasterLoaderSettings : SettingsFile
+    public class MasterLoaderSettings
     {
         const string SaveKey = "RcMasterLoader";
 
@@ -31,6 +33,29 @@ namespace rc
             var newItem = new MasterInfo();
             masterInfoList.Add(newItem);
             return newItem;
+        }
+
+        public void Save()
+        {
+            var json = JsonUtility.ToJson(this);
+            using (var sw = new StreamWriter("ProjectSettings/RcMasterLoader.json", false, Encoding.UTF8))
+            {
+                sw.Write(json);
+            }
+        }
+
+        public void Load()
+        {
+            try
+            {
+                using (var sr = new StreamReader("ProjectSettings/RcMasterLoader.json"))
+                {
+                    JsonUtility.FromJsonOverwrite(sr.ReadToEnd(), this);
+                }
+            }
+            catch (FileNotFoundException e)
+            {
+            }
         }
 
         // 設定が準備完了か
