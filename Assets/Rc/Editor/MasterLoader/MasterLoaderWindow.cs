@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-namespace rc
+namespace Rc
 {
     /// <summary>
     /// マスタ生成機能のウィンドウ

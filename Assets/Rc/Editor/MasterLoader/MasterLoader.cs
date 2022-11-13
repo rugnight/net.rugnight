@@ -9,7 +9,7 @@ using UnityEngine.Networking;
 using UnityEditor;
 
 
-namespace rc
+namespace Rc
 {
     /// <summary>
     /// Googleスプレッドシートからマスタを取得してScriptableObjectに流し込むクラス

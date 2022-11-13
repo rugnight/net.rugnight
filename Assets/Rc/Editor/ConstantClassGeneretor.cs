@@ -6,9 +6,9 @@ using System.Text;
 using UnityEngine;
 using UnityEditor;
 using UnityEditorInternal;
-using rc.constants;
+using Rc.constants;
 
-namespace rc
+namespace Rc
 {
     // Assets/Test/ConstantClassGeneretor
 

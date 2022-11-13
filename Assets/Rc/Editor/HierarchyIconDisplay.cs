@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace rc
+namespace Rc
 {
     /// <summary>
     /// ヒエラルキーにアタッチされているコンポーネントアイコンを表示する

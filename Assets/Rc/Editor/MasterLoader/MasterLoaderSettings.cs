@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEditor;
 using System.IO;
 
-namespace rc
+namespace Rc
 {
     [System.Serializable]
     public class MasterLoaderSettings

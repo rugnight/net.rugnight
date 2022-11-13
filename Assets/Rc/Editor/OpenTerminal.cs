@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-namespace rc
+namespace Rc
 {
     public class OpenTerminal 
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace rc
+namespace Rc
 {
     public class ImageFade : MonoBehaviour, IFade
     {

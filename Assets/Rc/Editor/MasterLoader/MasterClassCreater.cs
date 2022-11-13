@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace rc
+namespace Rc
 {
     /// <summary>
     /// マスターデータクラスの生成

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace rc.GameMode
+namespace Rc.GameMode
 {
     /// <summary>
     /// GameModeŠÖ˜A‚Ìˆ—‚Ìƒwƒ‹ƒp[

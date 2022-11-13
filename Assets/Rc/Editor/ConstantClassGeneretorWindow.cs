@@ -6,9 +6,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEditorInternal;
-using rc.constants;
+using Rc.constants;
 
-namespace rc
+namespace Rc
 {
     /// <summary>
     /// 各名前定数クラス作成ウィンドウ

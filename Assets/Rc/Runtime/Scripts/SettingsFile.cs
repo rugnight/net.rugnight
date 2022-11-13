@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace rc
+namespace Rc
 {
     /// <summary>
     /// Json形式で保存する設定ファイル

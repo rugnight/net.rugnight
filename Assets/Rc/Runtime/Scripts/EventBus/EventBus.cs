@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace rc
+namespace Rc
 {
     /// <summary>
     /// 各使用者がこれを継承したイベントを作成します

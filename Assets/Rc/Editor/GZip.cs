@@ -3,7 +3,7 @@ using System.IO;
 using System.IO.Compression;
 using UnityEngine;
 
-namespace rc
+namespace Rc
 {
     static public class GZip
     {

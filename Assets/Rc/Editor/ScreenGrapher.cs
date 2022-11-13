@@ -5,9 +5,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEditor;
 using System.Reflection;
-using rc.constants;
+using Rc.constants;
 
-namespace rc
+namespace Rc
 {
 
     public class ScreenGrapher : EditorWindow {

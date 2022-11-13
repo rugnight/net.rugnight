@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace rc
+namespace Rc
 {
     /// <summary>
     /// 正当性確認

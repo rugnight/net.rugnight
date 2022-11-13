@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace rc.constants
+namespace Rc.constants
 {
 #if UNITY_EDITOR
     /// <summary>
