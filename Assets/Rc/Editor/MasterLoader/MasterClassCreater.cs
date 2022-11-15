@@ -19,7 +19,7 @@ namespace Rc
         /// <param name="paramBody"></param>
         /// <param name="afterSerializeBody"></param>
         /// <returns></returns>
-        static public string CreateClassBodyCode(string className, string paramClassName, string paramBody, string afterSerializeBody)
+        static public string CreateClassBodyCode(string namespaceName, string className, string paramClassName, string paramBody, string afterSerializeBody)
         {
             return string.Format(@"
 /// <summary>
@@ -28,41 +28,42 @@ namespace Rc
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Master
+namespace {0}
 {{
 	[System.Serializable]
-	public class {0} : ScriptableObject
+	public class {1} : ScriptableObject
 	{{
         // --------------------------------------------------
         // マスター読み込み＆アクセス
         //
-        static {0} self = null;
-        static public List<{1}> DataList
+        static {1} self = null;
+        static public List<{2}> DataList
         {{
 
             get
             {{
                 if (self == null)
                 {{
-                    self = Resources.Load<{0}>(""Master/Field"");
+                    self = Resources.Load<{1}>(""Master/Field"");
                 }}
                 return self.list;
             }}
 
         }}
 
-		public List<{1}> list = new List<{1}>();
+        [SerializeField]
+		public List<{2}> list = new List<{2}>();
 
 		[System.Serializable]
-		public class {1} : ISerializationCallbackReceiver
+		public class {2} : ISerializationCallbackReceiver
 		{{
-{2}
+{3}
             // --------------------------------------------------
             // ISerializationCallbackReceiver
             //
             public virtual void OnAfterDeserialize()
             {{
-{3}
+{4}
             }}
             public virtual void OnBeforeSerialize()
             {{
@@ -70,6 +71,7 @@ namespace Master
         }}
     }}
 }} // namespace Master"
+            , namespaceName
             , className
             , paramClassName
             , paramBody

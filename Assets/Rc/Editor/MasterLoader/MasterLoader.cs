@@ -248,7 +248,7 @@ namespace Rc
 
             // CSファイルを構築
             var builder = new StringBuilder();
-            builder.Append(MasterClassCreater.CreateClassBodyCode(className, paramClassName, builderPrameters.ToString(), builderSerialization.ToString()));
+            builder.Append(MasterClassCreater.CreateClassBodyCode(namespaceName, className, paramClassName, builderPrameters.ToString(), builderSerialization.ToString()));
 
             var filePath = accessorDir + "/" + className + ".cs";
             var directoryName = Path.GetDirectoryName(filePath);
